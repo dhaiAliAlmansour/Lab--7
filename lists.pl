@@ -1,20 +1,14 @@
-and(true, true, true).
-and(true, false, false).
-and(false, true, false).
-and(false, false, false).
+deleteElement(_, [], []).
 
-or(true, true, true).
-or(true, false, true).
-or(false, true, true).
-or(false, false, false).
+deleteElement(X, [X|Tail], Result) :-
+    deleteElement(X, Tail, Result).
 
-not(true, false).
-not(false, true).
+deleteElement(X, [Head|Tail], [Head|Result]) :-
+    X \= Head,
+    deleteElement(X, Tail, Result).
 
-boolean(A, B, Result) :-
-    and(A, B, X),
-    not(A, NA),
-    not(B, NB),
-    and(NA, NB, Y),
-    or(X, Y, Result).
+add_at_the_end(X, [], [X]).
+
+add_at_the_end(X, [Head|Tail], [Head|Result]) :-
+    add_at_the_end(X, Tail, Result).
     
