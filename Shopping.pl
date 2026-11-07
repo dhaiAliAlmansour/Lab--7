@@ -38,4 +38,4 @@ display_items([]).
 
 display_items([Head|Tail]) :-
     writeln(Head),
-    display_items(Tail).
+    display_items(Tail)
